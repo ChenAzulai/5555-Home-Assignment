@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Salesman Sales Summary" icon-name="standard:opportunity">
+        <lightning-combobox
+            name="salesman"
+            label="Select Salesman"
+            placeholder="Select a Salesman"
+            options={salesmen}
+            value={selectedSalesmanId}
+            onchange={handleSalesmanChange}>
+        </lightning-combobox>
+        <template if:true={salesData}>
+            <lightning-datatable
+                key-field="id"
+                data={salesData}
+                columns={columns}
+                hide-checkbox-column="true"
+                class="slds-table_bordered slds-table_col-bordered">
+            </lightning-datatable>
+        </template>
+
+        <template if:true={error}>
+            <div class="slds-text-color_error">{error}</div>
+        </template>
+    </lightning-card>
+</template>
